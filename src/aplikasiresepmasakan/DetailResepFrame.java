@@ -177,12 +177,19 @@ public class DetailResepFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCetakPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakPDFActionPerformed
-    String dataResep = "Nama Resep: " + lblNamaResepDetail.getText() + "\n\n"
-        + "Bahan:\n" + txtBahanDetail.getText() + "\n\n"
-        + "Langkah:\n" + txtLangkahDetail.getText();
-    CetakPDF.cetakResep(dataResep); // Cetak PDF menggunakan data detail resep
-    JOptionPane.showMessageDialog(this, "PDF berhasil dicetak!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+    // Ambil data dari form detail resep
+    String namaResep = lblNamaResepDetail.getText();
+    String bahan = txtBahanDetail.getText();
+    String langkah = txtLangkahDetail.getText();
 
+    // Buat data untuk dicetak
+    String dataResep = "Nama Resep: " + namaResep + "\n\n" +
+            "Bahan:\n" + bahan + "\n\n" +
+            "Langkah:\n" + langkah;
+
+    // Panggil metode cetakResep dengan nama dan data resep
+    CetakPDF.cetakResep(namaResep, dataResep);
+    JOptionPane.showMessageDialog(this, "PDF berhasil dicetak!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnCetakPDFActionPerformed
 
     private void btnKembaliDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliDetailActionPerformed

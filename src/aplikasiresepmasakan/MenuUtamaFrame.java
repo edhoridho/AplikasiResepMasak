@@ -101,6 +101,11 @@ public class MenuUtamaFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblResep);
 
         btnCetakSemua.setText("Cetak Semua");
+        btnCetakSemua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakSemuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -182,6 +187,10 @@ public class MenuUtamaFrame extends javax.swing.JFrame {
     private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDetailActionPerformed
+
+    private void btnCetakSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakSemuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCetakSemuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,29 +297,45 @@ private void initActions() {
 
     // Aksi tombol Cetak
     btnCetak.addActionListener(e -> {
-        int selectedRow = tblResep.getSelectedRow();
-        if (selectedRow >= 0) {
-            String namaResep = tblResep.getValueAt(selectedRow, 0).toString();
-            String bahan = tblResep.getValueAt(selectedRow, 1).toString();
-            String langkah = tblResep.getValueAt(selectedRow, 2).toString();
+    int selectedRow = tblResep.getSelectedRow();
+    if (selectedRow >= 0) {
+        // Ambil nama resep dan data lengkap
+        String namaResep = tblResep.getValueAt(selectedRow, 0).toString();
+        String bahan = tblResep.getValueAt(selectedRow, 1).toString();
+        String langkah = tblResep.getValueAt(selectedRow, 2).toString();
 
-            String dataResep = "Nama Resep: " + namaResep + "\nBahan:\n" + bahan + "\nLangkah:\n" + langkah;
-            CetakPDF.cetakResep(dataResep);
-        } else {
-            JOptionPane.showMessageDialog(this, "Pilih resep yang ingin dicetak!", "Error", JOptionPane.WARNING_MESSAGE);
-        }
+        // Buat data untuk dicetak
+        String dataResep = "Nama Resep: " + namaResep + "\n\n" +
+                "Bahan:\n" + bahan + "\n\n" +
+                "Langkah:\n" + langkah;
+
+        // Panggil metode cetakResep dengan nama dan data resep
+        CetakPDF.cetakResep(namaResep, dataResep);
+        JOptionPane.showMessageDialog(this, "PDF berhasil dicetak!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Pilih resep yang ingin dicetak!", "Error", JOptionPane.WARNING_MESSAGE);
+    }
     });
 
     // Aksi tombol Cetak Semua
     btnCetakSemua.addActionListener(e -> {
-        StringBuilder dataSemuaResep = new StringBuilder();
-        DefaultTableModel model = (DefaultTableModel) tblResep.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            dataSemuaResep.append("Nama Resep: ").append(model.getValueAt(i, 0).toString()).append("\n")
-                    .append("Bahan:\n").append(model.getValueAt(i, 1).toString()).append("\n")
-                    .append("Langkah:\n").append(model.getValueAt(i, 2).toString()).append("\n\n");
-        }
-        CetakPDF.cetakSemuaResep(dataSemuaResep.toString());
+    DefaultTableModel model = (DefaultTableModel) tblResep.getModel();
+    if (model.getRowCount() == 0) {
+        JOptionPane.showMessageDialog(this, "Tidak ada data untuk dicetak!", "Error", JOptionPane.WARNING_MESSAGE);
+        return; // Jangan lanjutkan jika tabel kosong
+    }
+
+    StringBuilder dataSemuaResep = new StringBuilder();
+    for (int i = 0; i < model.getRowCount(); i++) {
+        dataSemuaResep.append("Nama Resep: ").append(model.getValueAt(i, 0).toString()).append("\n")
+                .append("Bahan:\n").append(model.getValueAt(i, 1).toString()).append("\n")
+                .append("Langkah:\n").append(model.getValueAt(i, 2).toString()).append("\n\n");
+    }
+
+    System.out.println("Data yang dikirim ke PDF:");
+    System.out.println(dataSemuaResep.toString()); // Debug log
+    // Cetak data ke PDF
+    CetakPDF.cetakSemuaResep(dataSemuaResep.toString());
     });
 
     // Aksi tombol Cari Online
