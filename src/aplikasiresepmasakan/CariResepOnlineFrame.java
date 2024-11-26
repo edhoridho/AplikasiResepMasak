@@ -10,8 +10,10 @@ package aplikasiresepmasakan;
  */
 // Tambahkan import untuk parsing JSON
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import aplikasiresepmasakan.ApiHandler;
 
 public class CariResepOnlineFrame extends javax.swing.JFrame {
 
@@ -121,14 +123,14 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
                     .addComponent(btnCari)
                     .addComponent(btnSimpanDatabase)
                     .addComponent(btnKembali))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jLabel3)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -161,25 +163,36 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
 
     // Panggil API
     String jsonResponse = ApiHandler.searchRecipes(keyword);
+    System.out.println("Respons dari API: " + jsonResponse);
+
     if (jsonResponse != null) {
         try {
-            // Parse JSON hasil API
             JSONObject response = new JSONObject(jsonResponse);
             JSONArray results = response.getJSONArray("results");
+
+            System.out.println("Jumlah hasil: " + results.length());
+            if (results.length() == 0) {
+                JOptionPane.showMessageDialog(this, "Tidak ada resep ditemukan!", "Info", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
 
             // Array untuk menyimpan nama resep
             String[] recipeNames = new String[results.length()];
             for (int i = 0; i < results.length(); i++) {
                 JSONObject recipe = results.getJSONObject(i);
-                recipeNames[i] = recipe.getString("title"); // Ambil nama resep
+                recipeNames[i] = recipe.getString("title");
             }
 
-            // Update JList dengan hasil pencarian
-            listHasilPencarian.setListData(recipeNames);
+            // Update JList(listHasilPencarian) dengan hasil pencarian yang diterima dari API
+            SwingUtilities.invokeLater(() -> {
+            listHasilPencarian.setListData(new String[0]); // Hapus data default
+            listHasilPencarian.setListData(recipeNames);  // Tambahkan data baru
+            });
+
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal memproses hasil pencarian!", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Gagal memproses hasil pencarian!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     } else {
         JOptionPane.showMessageDialog(this, "Tidak ada hasil atau koneksi gagal!", "Error", JOptionPane.ERROR_MESSAGE);

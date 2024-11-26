@@ -11,6 +11,8 @@ package aplikasiresepmasakan;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 // Mengakses API Masak Apa Hari Ini
 public class ApiHandler {

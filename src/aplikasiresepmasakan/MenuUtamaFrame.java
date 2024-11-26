@@ -10,6 +10,9 @@ package aplikasiresepmasakan;
  */
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import aplikasiresepmasakan.DatabaseHandler;
+import aplikasiresepmasakan.Recipe;
+import aplikasiresepmasakan.CetakPDF;
 
 public class MenuUtamaFrame extends javax.swing.JFrame {
 
