@@ -26,7 +26,7 @@ public class DatabaseHandler {
     public Connection connect() {
         try {
             Connection conn = DriverManager.getConnection(DB_URL);
-            createTableIfNotExists(conn); // Pastikan tabel dibuat
+            createTableIfNotExists(conn); // memastikan tabel dibuat
             return conn;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -77,20 +77,27 @@ public class DetailResepFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 153));
 
+        jLabel2.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel2.setText("Nama Resep");
 
+        jLabel3.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel3.setText("Bahan");
 
+        jLabel4.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel4.setText("Langkah");
 
+        txtBahanDetail.setBackground(new java.awt.Color(255, 255, 204));
         txtBahanDetail.setColumns(20);
         txtBahanDetail.setRows(5);
         jScrollPane1.setViewportView(txtBahanDetail);
 
+        txtLangkahDetail.setBackground(new java.awt.Color(255, 255, 204));
         txtLangkahDetail.setColumns(20);
         txtLangkahDetail.setRows(5);
         jScrollPane2.setViewportView(txtLangkahDetail);
 
+        btnCetakPDF.setBackground(new java.awt.Color(255, 204, 102));
+        btnCetakPDF.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnCetakPDF.setText("Cetak");
         btnCetakPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +105,8 @@ public class DetailResepFrame extends javax.swing.JFrame {
             }
         });
 
+        btnKembaliDetail.setBackground(new java.awt.Color(255, 204, 102));
+        btnKembaliDetail.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnKembaliDetail.setText("Kembali");
         btnKembaliDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

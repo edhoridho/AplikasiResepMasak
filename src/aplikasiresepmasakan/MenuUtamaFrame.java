@@ -68,10 +68,16 @@ public class MenuUtamaFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 153));
 
+        btnTambah.setBackground(new java.awt.Color(255, 204, 102));
+        btnTambah.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnTambah.setText("Tambah");
 
+        btnUbah.setBackground(new java.awt.Color(255, 204, 102));
+        btnUbah.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnUbah.setText("Ubah");
 
+        btnHapus.setBackground(new java.awt.Color(255, 204, 102));
+        btnHapus.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +85,8 @@ public class MenuUtamaFrame extends javax.swing.JFrame {
             }
         });
 
+        btnDetail.setBackground(new java.awt.Color(255, 204, 102));
+        btnDetail.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnDetail.setText("Detail");
         btnDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,10 +94,15 @@ public class MenuUtamaFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCariOnline.setBackground(new java.awt.Color(255, 204, 102));
+        btnCariOnline.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnCariOnline.setText("Cari Online");
 
+        btnCetak.setBackground(new java.awt.Color(255, 204, 102));
+        btnCetak.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnCetak.setText("Cetak");
 
+        tblResep.setBackground(new java.awt.Color(255, 255, 204));
         tblResep.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -103,6 +116,8 @@ public class MenuUtamaFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblResep);
 
+        btnCetakSemua.setBackground(new java.awt.Color(255, 204, 102));
+        btnCetakSemua.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnCetakSemua.setText("Cetak Semua");
         btnCetakSemua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +150,7 @@ public class MenuUtamaFrame extends javax.swing.JFrame {
                         .addComponent(btnCetakSemua)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

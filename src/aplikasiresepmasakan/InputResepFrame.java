@@ -74,20 +74,26 @@ public InputResepFrame(Recipe recipe) {
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 153));
 
+        jLabel2.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel2.setText("Nama Resep");
 
+        jLabel3.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel3.setText("Bahan");
 
+        jLabel4.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel4.setText("Langkah");
 
+        jLabel5.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel5.setText("Gambar");
 
-        txtNamaResep.setBackground(new java.awt.Color(255, 204, 204));
+        txtNamaResep.setBackground(new java.awt.Color(255, 255, 204));
 
+        txtBahan.setBackground(new java.awt.Color(255, 255, 204));
         txtBahan.setColumns(20);
         txtBahan.setRows(5);
         jScrollPane1.setViewportView(txtBahan);
 
+        txtLangkah.setBackground(new java.awt.Color(255, 255, 204));
         txtLangkah.setColumns(20);
         txtLangkah.setRows(5);
         jScrollPane2.setViewportView(txtLangkah);
@@ -98,7 +104,8 @@ public InputResepFrame(Recipe recipe) {
             }
         });
 
-        btnSimpan.setBackground(new java.awt.Color(255, 153, 102));
+        btnSimpan.setBackground(new java.awt.Color(255, 204, 102));
+        btnSimpan.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +113,8 @@ public InputResepFrame(Recipe recipe) {
             }
         });
 
-        btnBatal.setBackground(new java.awt.Color(255, 153, 102));
+        btnBatal.setBackground(new java.awt.Color(255, 204, 102));
+        btnBatal.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnBatal.setText("Batal");
         btnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +144,7 @@ public InputResepFrame(Recipe recipe) {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,13 +167,16 @@ public InputResepFrame(Recipe recipe) {
                         .addComponent(btnBatal)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(93, 93, 93))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(fileChooserGambar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);

@@ -62,8 +62,13 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 153));
 
+        jLabel2.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel2.setText("Ketikkan Resep yang ingin anda cari");
 
+        txtKataKunci.setBackground(new java.awt.Color(255, 255, 204));
+
+        btnCari.setBackground(new java.awt.Color(255, 204, 102));
+        btnCari.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnCari.setText("Cari");
         btnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,8 +76,12 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
             }
         });
 
+        btnSimpanDatabase.setBackground(new java.awt.Color(255, 204, 102));
+        btnSimpanDatabase.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnSimpanDatabase.setText("Simpan");
 
+        btnKembali.setBackground(new java.awt.Color(255, 204, 102));
+        btnKembali.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         btnKembali.setText("Kembali");
         btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +89,7 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
             }
         });
 
+        listHasilPencarian.setBackground(new java.awt.Color(255, 255, 204));
         listHasilPencarian.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -87,6 +97,7 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listHasilPencarian);
 
+        jLabel3.setFont(new java.awt.Font("Kristen ITC", 0, 12)); // NOI18N
         jLabel3.setText("Hasil Pencarian");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -109,7 +120,7 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnKembali))
                         .addComponent(txtKataKunci, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +141,7 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -191,6 +202,7 @@ public class CariResepOnlineFrame extends javax.swing.JFrame {
 
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal memproses hasil pencarian!", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Gagal memproses hasil pencarian!", "Error", JOptionPane.ERROR_MESSAGE);
         }
